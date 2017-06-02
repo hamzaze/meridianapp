@@ -1,0 +1,60 @@
+<div class="page" data-page="custom">
+    <div class="overlayBlue">
+        <div id="topHeader" class="topHeader abs">
+            <div class="businessConf2 bg-orange text-right height44">
+            <div class="abs hasBackLink">
+                <a href="#" class="link back-link back" data-templatename="welcomeTemplate"><img src="images/goback_arrow.png" alt="Back" /></a>
+            </div>
+            <div class="text-center text-white padd10"><strong>Attendee Details</strong></div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="text-white">
+                <div id="wrapAttendees" class="wrapAttractions paddTopBottom20 text-center">
+                    <div class="personalBlock{{classAnswers}}">
+                        <div class="box effect2">
+                            <img class="circle" src="{{image}}" alt="{{firstname}} {{lastname}}" />
+                            <h2>{{firstname}} {{lastname}}</h2>
+                            <p>{{jobtitle}}</p>
+                            <p>{{functionarea}}</p>
+                            <div class="socialIcons paddTopBottom20">
+                                {{#if facebook}}
+                                <a target="_blank" class="external" href="{{facebook}}"><img src="images/facebook.png" alt="Facebook" /></a>
+                                {{/if}}
+                                {{#if twitter}}
+                                <a target="_blank" class="external" href="{{twitter}}"><img src="images/twitter.png" alt="" /></a>
+                                {{/if}}
+                                {{#if email}}
+                                <a class="external" href="mailto:{{email}}"><img src="images/emailicon.png" alt="" /></a>
+                                {{/if}}
+                                {{#if linkedin}}
+                                <a target="_blank" class="external" href="{{linkedin}}"><img src="images/linkedin.png" alt="" /></a>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    {{#if questionsandanswers}}
+                    <div id="wrapSurveys" class="wrapQuestions wrapAttractions">
+                        <div class="socialBlock">
+                            <div class="box effect2">
+                                
+                                    {{#each questionsandanswers}}
+                                        {{#if answer}}
+                                            <div class="item text-center">
+                                                <div class="wrapQuestion">
+                                                    <h3 class="text-orange"><strong>{{ord}}.</strong> {{question}}</h3>
+                                                    <p class="text-white">{{answer}}</p>
+                                                </div>
+                                            </div>
+                                        {{/if}}
+                                    {{/each}}
+                                
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

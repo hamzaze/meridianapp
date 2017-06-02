@@ -1,0 +1,103 @@
+<div class="page page-survey" data-page="survey">
+    <div class="overlayBlue">
+        <div id="topHeader" class="topHeader abs">
+            <div class="businessConf2 bg-orange text-right height44">
+            <div class="abs hasBackLink">
+                <a href="#" class="link back-link back" data-templatename="welcomeTemplate"><img src="images/goback_arrow.png" alt="Back" /></a>
+            </div>
+            <div class="text-center text-white padd10"><strong>Event Feedback</strong></div>
+            </div>
+        </div>
+        <div class="page-content">
+            {{#if agendasurvey}}
+                {{#if agendasurvey.records}}
+                
+                {{else}}
+                <div class="abs text-center text-orange top50 fullwidth">Sorry, this survey is currently<br />
+unavailable. Please come back<br />
+at a later time to leave your<br />
+valuable feedback.</div>
+                {{/if}}
+            {{/if}}
+            <div class="wrapAgendaDetails">
+                <div class="personalBlock text-white">
+                    <div class="box effect2">
+                        {{#if speakerdetails}}
+                            {{#if speakerdetails.records}}
+                                {{#each speakerdetails.records}}
+                                    <div class="item text-left text-white">
+                                        <div class="flexbox">
+                                            <img class="circle" src="{{image}}" alt="{{name}}" />
+                                            <div class="flex1"><h2>{{../../description}}</h2><p>{{name}}</p></div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            {{/if}}
+                            
+                        {{else}}
+                        <h2>{{description}}</h2>
+                        {{/if}}
+                    </div>
+                </div>
+                <div>
+                <div class="text-white paddTopBottom20">
+                  <!-- SURVEYS -->
+                    {{#if agendasurvey}}
+                        <div class="padd20 text-white">
+                            <div id="wrapSurveys" class="wrapAttractions paddTopBottom20">
+                                {{#if agendasurvey.records}}
+                                        <form action="#" id="frmUserExperienceSurvey" method="post" data-action="handlewithform" class="store-data">
+                                            <div class="hidden">
+                                                <input name="context" value="userExperienceSurvey" type="hidden">
+                                                <input name="aEEE_agendaid" value="{{../id}}" type="hidden">
+                                            </div>
+                                            <div class="col-100">
+                                                {{#each agendasurvey.records}}
+                                                    <div class="item text-white" data-type="surveyquestion" data-answertype="{{answertype}}" data-anchor="squestion{{id}}">
+                                                        <input name="aEOE_answertype{{id}}" value="{{answertype}}" type="hidden">
+                                                        <input name="aEOE_comment{{id}}" type="hidden">
+                                                        <div class="wrapQuestion">
+                                                            <h3 data-questionnumber="{{questionnumber}}">{{question}}</h3>
+                                                                {{#if questiontypes}}
+                                                                <div class="list-block">
+<ul>
+<!-- data-back-on-select="true" to close page automatically -->
+<li><a href="#" class="item-link smart-select" data-back-on-select="true" data-open-in="popup" data-page-title="Event Feedback">
+                                                                     <select class="mf-select" size="1" name="aEOE_answertype{{id}}">
+                                                                        <option value="0">-- Select --</option>
+                                                                        {{#each questiontypes}}
+
+                                                                            <option value="{{id}}"{{selected}}>{{name}}</option>
+                                                                        {{/each}}
+                                                                        </select>
+                                                                <div class="item-content">
+<div class="item-inner">
+</div>
+</div></a></li>
+</ul>
+</div>
+                                                                {{/if}}
+                                                                {{#if iscomment}}
+                                                                <a href="#" data-action="togglemenu" class="button button-fill color-green small" data-toggle="collapse" data-target="#surveyComment{{id}}">+ Comment</a>
+                                                                <div class="collapse{{classActivated}}" id="surveyComment{{id}}">                                                                                                                                                                                                                            <textarea name="aEOE_comment{{id}}" class="mf-textarea">{{comment}}</textarea>
+                                                                </div>
+                                                                {{/if}}
+                                                        </div>
+                                                    </div>
+                                                {{/each}}
+                                        </div>
+                                        <div class="fRow text-center">
+                                            <button class="button button-fill color-green akalogin">Save & Submit</button>
+                                        </div>
+                                        </form>
+                                {{/if}}
+                            </div>
+                            
+                        </div>
+                    {{/if}}
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

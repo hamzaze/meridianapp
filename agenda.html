@@ -1,0 +1,95 @@
+<div class="page page-agenda" data-page="agenda">
+    <div class="overlayBlue">
+        <div id="topHeader" class="topHeader abs">
+            <div class="businessConf2 bg-orange text-right height44">
+            <div class="abs hasBackLink">
+                <a href="#" class="link back-link back" data-templatename="welcomeTemplate"><img src="images/goback_arrow.png" alt="Back" /></a>
+            </div>
+            <div class="text-center text-white padd10"><strong>Agenda Details</strong></div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="wrapAgendaDetails">
+                <div class="personalBlock text-center text-white">
+                    <div class="box effect2">
+                        <h2>{{description}}</h2>
+                        <p>{{name}}</p>
+                        <p>{{dlongdate}} {{stimeA}} to {{etimeA}}</p>
+                    </div>
+                </div>
+                <div>
+                <div class="text-white paddTopBottom20">
+                    
+                        {{#if speakerdetails}}
+                        
+                            {{#if speakerdetails.records}}
+                            <div id="wrapAgendas" class="wrapAttractions paddTopBottom20 text-center">
+                                {{#each speakerdetails.records}}
+                                    <img class="circle" src="{{image}}" alt="{{name}}" />
+                                    <h2>{{name}}</h2>
+                                    <p>{{subinformation}}</p>
+                                    <div class="socialIcons paddTopBottom20">
+                                        {{#if facebook}}
+                                            <a class="external" target="_blank" href="{{facebook}}"><img src="images/facebook.png" alt="Facebook" /></a>
+                                        {{/if}}
+                                        {{#if twitter}}
+                                            <a class="external" target="_blank" href="{{twitter}}"><img src="images/twitter.png" alt="" /></a>
+                                        {{/if}}
+                                        {{#if email}}
+                                            <a class="external" target="_blank" href="mailto:{{email}}"><img src="images/emailicon.png" alt="" /></a>
+                                        {{/if}}
+                                        {{#if linkedin}}
+                                        <a class="external" target="_blank" href="{{linkedin}}"><img src="images/linkedin.png" alt="" /></a>
+                                        {{/if}}
+                                    </div>
+                                    <div class="padd20 text-left">{{biography}}</div>
+                                {{/each}}
+                            {{/if}}
+                            </div>
+                        {{/if}}
+                    
+                    {{#if image}}
+                        <div class="padd20 hasShadow">
+                            <a href="#" data-src="{{image}}" data-action="openphotoinpopup"><img class="image" src="{{image}}" alt="{{description}}" /></a>
+                        </div>
+                    {{/if}}
+                </div>
+                    {{#if isaskorsessionfeedback}} 
+                    <div class="padd20 bg-darkblue">
+                        {{#if askenabled}}
+                            <a href="question.html" data-context='{{stringify this}}'>
+                                <div class="item bg-orange text-left text-white">
+                                    <div class="flexbox">
+                                        <div class="image-holder" style="background-image: url(/app/images/askQuestion.png);"></div>
+                                        <div class="flex1 text-center"><h3>Ask or vote on a Question</h3></div>
+                                    </div>
+                                </div>
+                            </a>
+                        {{/if}}
+                        {{#if sessionfeedback}}
+                            {{#if agendasurvey}}
+                                <a href="survey.html" data-context='{{stringify this}}'>
+                                    <div class="item bg-orange text-left text-white">
+                                        <div class="flexbox">
+                                            <div class="image-holder" style="background-image: url(/app/images/sessionFeedback.png);"></div>
+                                            <div class="flex1 text-center"><h3>Session Feedback</h3></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            {{/if}}
+                        {{/if}}
+                        <a href="#" data-action="addedititem" data-context="wrapCustomPage" data-id="52">
+                            <div class="item bg-orange text-left text-white">
+                                <div class="flexbox">
+                                    <div class="image-holder" style="background-image: url(/app/images/addNote.png);"></div>
+                                    <div class="flex1 text-center"><h3>+ Add a note</h3></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
