@@ -4,6 +4,7 @@
 
 body{
     font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body .page[data-page="index"]{
@@ -161,6 +162,10 @@ a img{
 
 [data-page="me"] form{
     height: inherit;
+}
+
+[data-page="poll"] div.page-content{
+    overflow: hidden;
 }
 
 [data-page="poll"][data-online="0"] div.page-content > div.overlayDisable{
@@ -724,6 +729,10 @@ div#wrapME.wrapAttractions, div#wrapAttendees.wrapAttractions{
     overflow: hidden;
 }
 
+div#wrapAttendees.wrapAttractions div.item div.flex1 i.abs{
+    right: 0;
+}
+
 div#wrapME.wrapAttractions textarea.mf-textarea{
     height: 50px;
 }
@@ -749,6 +758,44 @@ div#wrapSocialMedia.wrapAttractions div.image-holder, div#wrapInfobooth.wrapAttr
     background-position: center center;
     background-repeat: no-repeat;
     background-size: auto 60%;
+}
+
+div#wrapSocialMedia.wrapAttractions div.image-holder > div, div#wrapInfobooth.wrapAttractions div.image-holder > div, div.wrapAgendaDetails div.image-holder > div{
+    width: 76px;
+    height: 70px;
+    background-color: transparent;
+}
+
+div#wrapSocialMedia.wrapAttractions div.image-holder{
+    float: left;
+}
+
+div#wrapSocialMedia.wrapAttractions div.item > div.relative{
+    height: inherit;
+    overflow: hidden;
+}
+
+div#wrapSocialMedia.wrapAttractions div.item div.flex2{
+    width: calc(100% - 76px);
+    height: inherit;
+    float: right;
+    padding: 0 10px;
+}
+
+div#wrapSocialMedia.wrapAttractions div.item div.flex2 > div.abs{
+    overflow: hidden;
+    padding: 0 30px 0 10px;
+}
+
+div#wrapSocialMedia.wrapAttractions div.item div.flex2 > div.abs i.abs{
+    right: 10px;
+}
+
+div#wrapSocialMedia.wrapAttractions div.item div.flex2 > div.abs span{
+    display: block;
+    position: relative;
+    overflow: hidden;
+    height: 24px;
 }
 
 div.wrapAttractions div.image-holder img{
@@ -890,14 +937,19 @@ div.wrapPieChart{
 
 div.wrapPieChart [data-target="piechart"]{
     left: 50%;
-    margin-left: -105px;
+    margin-left: -100px;
     width: 200px;
     bottom: 0;
     text-align: center;
 }
 
+div.wrapPieChart[data-countoptions="5"] [data-target="piechart"]{
+    margin-left: -80px;
+    width: 160px;
+}
+
 div.pieChartTextIntro{
-    padding: 0.5rem 0 0.5rem;
+    padding: 0 0 0.5rem;
     font-size: 80%;
 }
 
@@ -1301,6 +1353,14 @@ div.wrapAttractions div.item h2{
     margin: 0;
     padding: 0;
     line-height: 140%;
+}
+
+div#wrapSocialMedia.wrapAttractions div.item h2{
+    font-size: 1.2rem;
+}
+
+div#wrapSocialMedia.wrapAttractions div.item div.flex1 > div.relative{
+    overflow: hidden;
 }
 
 div.wrapAttractions h3{

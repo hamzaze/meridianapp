@@ -417,9 +417,10 @@ DP.validateForm = function(){
                                                          $$("#wrapAgendaQuestions div[data-target='questionlist']").html(data["content"]);
                                                     }else if(whatForm=="frmUserExperiencePoll"){
                                                         //alert("request succeed!");
+                                                        $$("#wrapPieChart").attr("data-countoptions", data["countoptions"]);
                                                         $$("#wrapPieChart #myChart").html("");
                                                         $$("#wrapPieChart").find("div.pieChartTextIntro").find("div.text-primary").html("n="+data["countusersvoted"]);
-                                                        $$("[data-target='polloptions']").html(data["content"]);
+                                                        $$("[data-target='polloptions']").attr("data-countoptions", data["countoptions"]).html(data["content"]);
                                                         drawPieChart(data["results"], $$("#wrapPieChart #myChart")[0].getContext("2d"));
                                                         window.setTimeout(function(){
                                                              $$("[data-target='polloptions']").addClass("activated");
@@ -925,9 +926,10 @@ $$(document).on("click", "a[data-action='addedititem']", function(e){
                         $$("#wrapAgendaQuestions div[data-target='questionlist']").html(data["content"]);
                     }else if(postData["context"]=="wrapPollStatisticByOptions"){
                         $this.removeClass("spinner");
+                        $$("#wrapPieChart").attr("data-countoptions", data["countoptions"]);
                         $$("#wrapPieChart #myChart").html("");
                    $$("#wrapPieChart").find("div.pieChartTextIntro").find("div.text-primary").html("n="+data["countusersvoted"]);
-                   $$("[data-target='polloptions']").html(data["content"]);
+                   $$("[data-target='polloptions']").attr("data-countoptions", data["countoptions"]).html(data["content"]);
                    drawPieChart(data["results"], $$("#wrapPieChart #myChart")[0].getContext("2d"));
                    window.setTimeout(function(){
                         $$("[data-target='polloptions']").addClass("activated");
@@ -1059,6 +1061,11 @@ $$(document).on("click", "input[type=file]", function(){
 
 $$(document).on("change", "input[type=file]", function(){
     previewFile();
+});
+
+$$('input, textarea').on('focus', function(e) {
+    e.preventDefault(); e.stopPropagation();
+    window.scrollTo(0,0); //the second 0 marks the Y scroll pos. Setting this to i.e. 100 will push the screen up by 100px. 
 });
 
 function previewFile() {
@@ -1268,6 +1275,7 @@ function autoLoadCurrentPoll(id){
            isAjaxLoaded=false;
                if(data["success"]==1){
                    if(data["answered"]>0){
+                       $$("#wrapPieChart").attr("data-countoptions", data["countoptions"]);
                         $$("#wrapPieChart #myChart").html("");
 
                         $$("#wrapPieChart").find("div.pieChartTextIntro").find("div.text-primary").html("n="+data["countusersvoted"]);
@@ -1275,7 +1283,7 @@ function autoLoadCurrentPoll(id){
                         drawPieChart(data["results"], $$("#wrapPieChart #myChart")[0].getContext("2d"));
                         
                     }
-                    $$("[data-target='polloptions']").html(data["content"]);
+                    $$("[data-target='polloptions']").attr("data-countoptions", data["countoptions"]).html(data["content"]);
                     window.setTimeout(function(){
                         $$("[data-target='polloptions']").addClass("activated");
                     }, 200);
