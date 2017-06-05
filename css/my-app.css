@@ -407,7 +407,6 @@ h1.small{
 .wrapWelcomeBlocks{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    background-color: #000;
 }
 
 .bg-orange{
@@ -434,6 +433,10 @@ h1.small{
     background-color: #a7cc46;
 }
 
+.button.button-fill.color-green{
+    font-size: 1rem;
+}
+
 .text-orange{
     color: #faae30;
 }
@@ -444,6 +447,10 @@ h1.small{
 
 .zindex100{
     z-index: 100;
+}
+
+.padd5{
+    padding: 5px;
 }
 
 .padd10{
@@ -567,7 +574,8 @@ h1.small{
     perspective: 1000;
     -moz-perspective: 1000;
     -webkit-perspective: 1000;
-    background-color: #fff;
+    background-color: transparent;
+    opacity: 1;
 }
 /* flip the pane when hovered */
 .flip-container.hover .flipper {
@@ -1032,8 +1040,10 @@ div#wrapAttendees.wrapAttractions div.item{
     background-color: #44697e;
     margin: 0;
     border-bottom: dashed 1px #fff;
-    height: 70px;
+    height: auto;
     padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 div.wrapAgendaDetails div.personalBlock div.item{
@@ -1088,8 +1098,8 @@ div#wrapContacts.wrapAttractions div.item{
 }
 
 div#wrapSpeakers.wrapAttractions div.item{
-    padding: 0 30px;
-    height: 100px;
+    padding: 5px 20px;
+    height: auto;
     background-color: #214153;
     margin-bottom: 4px;
 }

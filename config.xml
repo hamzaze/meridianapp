@@ -58,6 +58,9 @@
         <icon src="res/ios/icon/Icon-Small-50x50@1x.png" platform="ios" width="50" height="50" />
         <icon src="res/ios/icon/Icon-Small-50x50@2x.png" platform="ios" width="100" height="100" />
     </platform>
+    <gap:config-file platform="android" parent="/manifest">
+     <application android:debuggable="true" />
+</gap:config-file>
     <preference name="target-device" value="handset" />
     <preference name="deployment-target" value="8.0" />
   <preference name="DisallowOverscroll" value="true"/>
