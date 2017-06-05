@@ -243,7 +243,7 @@ button{
     padding-left: 1.5rem;
 }
 
-.loginBlock .fRow div.mf-input i.f7-icons{
+.loginBlock .fRow div.mf-input i.f7-icons, .loginBlock .fRow div.mf-input i.fa{
     position: absolute;
     left: 1px;
     top: 0.3rem;
