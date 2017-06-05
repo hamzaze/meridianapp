@@ -3,9 +3,6 @@
   <description>M Event</description>
   <author href="http://www.intellicomstudios.net" email="info@intellicomstudios.net">Robin Ozolins</author>
   <content src="index.html" />
-  <gap:config-file platform="android" parent="/manifest">
-     <application android:debuggable="true" />
-</gap:config-file>
     <access origin="http://www.meridianleadershipconference.com" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
