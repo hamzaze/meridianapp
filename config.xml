@@ -15,6 +15,3 @@
   <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
   <preference name="phonegap-version" value="cli-6.5.0" />
 </widget>
-<gap:config-file platform="android" parent="/manifest">
-     <application android:debuggable="false" />
-</gap:config-file>
