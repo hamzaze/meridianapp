@@ -3,7 +3,7 @@
   <head>
     <!-- Required meta tags-->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=medium-dpi, user-scalable=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=medium-dpi, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!-- Your app title -->
@@ -148,7 +148,9 @@
                                                         {{#if unvotedPolls}}
                                                             <div class="badge abs text-center"><span class="abs top50 left50">{{unvotedPolls}}</span></div>
                                                         {{/if}}
-                                                        <div class="circle" style="background-color: {{color}}; background-image: url({{image}})"></div>
+                                                        <a{{actions}} data-href="{{realpath}}" href="{{realpath}}" target="_blank" data-id="{{id}}" data-bgcolor="{{color}}" class="{{linkClass}}">
+                                                            <div class="circle" style="background-color: {{color}}; background-image: url({{image}})"></div>
+                                                        </a>
                                                 <h1 class="small">{{name}}</h1>
                                                 </div>
                                             </div>
