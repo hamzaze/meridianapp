@@ -10,6 +10,9 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <gap:config-file platform="android" parent="/manifest">
+     <application android:debuggable="false" />
+</gap:config-file>
   <icon src="icon.png"/>
   <preference name="DisallowOverscroll" value="true"/>
   <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
