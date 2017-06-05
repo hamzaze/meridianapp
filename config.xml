@@ -1,4 +1,7 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.phonegap.meridianapp" version="1.0.0">
+    <gap:config-file platform="android" parent="/manifest">
+     <application android:debuggable="false" />
+</gap:config-file>
   <name>M Event</name>
   <description>M Event</description>
   <author href="http://e-solucije.com" email="hamzaze@hotmail.com">Hamza Hrnjicevic</author>
