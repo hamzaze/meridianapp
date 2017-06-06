@@ -25,8 +25,7 @@ Template7.registerHelper('if_compare', function (a, operator, b, options) {
 var myApp = new Framework7({
     precompileTemplates: true,
     template7Pages: true, // need to set this
-    cache: false,
-    cacheDuration: 1000
+    cache: false
 });
  
 // If we need to use custom DOM library, let's save it to $$ variable:
@@ -994,22 +993,28 @@ myApp.onPageInit('index', function (page) {
     if($$("div.page.page-on-center div.page-content > #wrapWelcomeBlocks").length>0){
           console.log("wrapWelcomeBlocks");
           
-          /*
-          if(akaLocalStorageWelcomeTemplate!==null){
+          
+        if(akaLocalStorageWelcomeTemplate!==null){
             var data=JSON.parse(akaLocalStorageWelcomeTemplate);
-            console.log(akaLocalStorageWelcomeTemplate);
-          }else{
-              var data=JSON.parse(localStorage.getItem('welcomeTemplate'));
-          }
-          */
-         var data=JSON.parse(akaLocalStorageWelcomeTemplate);
-         data='undefined';
+        }else{
+            var data=JSON.parse(localStorage.getItem('welcomeTemplate'));
+        }
+         
+        var welcomeTemplate = $$('#welcomeTemplate').html();
+        // compile it with Template7
+        var compiledWelcomeTemplate = Template7.compile(welcomeTemplate);
+         
+        var html=compiledWelcomeTemplate(data);
+         
+        $$("div.page.page-on-center div.page-content").html(html);
+         /*
             mainView.router.load({
                 template: Template7.templates.welcomeTemplate,
                 animatePages: false,
                 reload: false,
                 context: data
             });
+        */
       }
       if($$("div.page.page-on-center div.page-content #wrapTopAgendaDates").length>0){
             $$(document).detectWithScroll1();
@@ -1028,12 +1033,7 @@ myApp.onPageInit('note', function (page) {
   // "page" variable contains all required information about loaded and initialized page 
 });
 
-myApp.onPageBack('poll', function(page){
-    autoLoadWelcomeTemplate();
-});
-
-myApp.onPageBack('alert', function(page){
-    console.log("Back from alert page");
+myApp.onPageBack('*', function(page){
     autoLoadWelcomeTemplate();
 });
 
@@ -1074,24 +1074,72 @@ function previewFile() {
   var file    = $$('input[type=file]')[0].files[0];
   var reader  = new FileReader();
 
-  reader.addEventListener("load", function () {
-    
+  reader.addEventListener("load", function (e) {
+      console.log(e);
     
     if(isAjaxLoaded) return false;
     isAjaxLoaded=true;
     var postData={image: reader.result};
+    $$("#container").addClass("activated");
+    
+    
+    var animatePercentage=0;
+    var startColor = '#faae30';
+    var endColor = '#faae30';
+    
+    var circle = new ProgressBar.Circle(container, {
+        color: startColor,
+        trailColor: '#fff',
+        trailWidth: 0,
+        duration: 0,
+        easing: 'linear',
+        strokeWidth: 4,
+        fill: 'rgba(255,255,255, 0.9)',
+        text: {
+            value: (animatePercentage * 100) + "%",
+            className: 'progressbar__label'
+        },
+        // Set default step function for all animate calls
+        step: function (state, circle) {
+            circle.path.setAttribute('stroke', state.color);
+        }
+    });
+    circle.text.style.fontSize = '1.5rem';
+    
     
     $$.ajax({
+        beforeSend: function(XMLHttpRequest)
+  {
+    //Upload progress
+    XMLHttpRequest.upload.addEventListener("progress", function(evt){
+      if (evt.lengthComputable) {  
+        var percentComplete = evt.loaded / evt.total;
+        
+        AnimateCircle(circle, percentComplete);
+      }
+    }, false); 
+    //Download progress
+    XMLHttpRequest.addEventListener("progress", function(evt){
+      if (evt.lengthComputable) {  
+        var percentComplete = evt.loaded / evt.total;
+        //Do something with download progress
+      }
+    }, false); 
+  },
        type: "POST",
        url: pathToAjaxDispatcher + "?context=uploadPhoto&pathToUpload=images&infunction=appprofilephoto&filename=" + file.name,
+       
        data: postData,
        dataType: "json",
        success: function(data){
            isAjaxLoaded=false;
                if(data["success"]==1){
-                   preview.addClass("circle").children("img").attr("src", reader.result);
-                   preview1.html("").append($$("<img src='"+reader.result+"' alt='Upload Photo' />"));
-                   localStorage.setItem('welcomeTemplate', JSON.stringify(data));
+                   preview.addClass("circle").children("img").attr("src", data["src"]);
+                   preview1.html("").append($$("<div class='btn btn-upload'><input name='new-image' id='new-image' type='file'></div><img src='"+data["src"]+"' alt='Upload Photo' />"));
+                   $$("#container").removeClass("processing activated");
+                   window.setTimeout(function(){
+                       circle.destroy();
+                   }, 500);
                    displayInfo(data["message"], $$("body"));
                }else{
                    displayAlert(data["message"], $$("body"));
@@ -1329,6 +1377,56 @@ function autoLoadCurrentDiscussion(id){
            isAjaxLoaded=false;
        }
     });
+}
+
+
+function wrapProgressBar1(){
+    // progressbar.js@1.0.0 version is used
+// Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+
+var bar = new ProgressBar.Circle(container, {
+  color: '#fff',
+  // This has to be the same size as the maximum width to
+  // prevent clipping
+  strokeWidth: 4,
+  trailWidth: 1,
+  easing: 'easeInOut',
+  text: {
+    autoStyleContainer: false
+  },
+  from: { color: '#faae30', width: 4 },
+  to: { color: '#faae30', width: 4 },
+  // Set default step function for all animate calls
+  
+});
+
+}
+
+function AnimateCircle(circle, animatePercentage) {
+    var startColor = '#faae30';
+    var endColor = '#faae30';
+    circle.animate(animatePercentage, {
+        from: {
+            color: startColor
+        },
+        to: {
+            color: endColor
+        }
+    });
+    var value = Math.round(animatePercentage * 100);
+    if (value === 0) {
+      circle.setText('');
+    } else {
+        if(value>=100){
+           window.setTimeout(function(){
+               $$("#container").addClass("processing"); 
+           circle.text.style.fontSize = '1rem'; 
+           circle.setText("Photo resizing."); 
+           }, 500);
+        }else{
+            circle.setText(value+"%");
+        }
+    }
 }
 
 window.setTimeout(function(){

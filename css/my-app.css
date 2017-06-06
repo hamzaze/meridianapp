@@ -348,6 +348,32 @@ a#preview.circle{
     text-align: center;
 }
 
+#container {
+  width: 100px;
+  height: 100px;
+  position: absolute !important;
+  top: 0;
+  left: 50%;
+  margin-left: -50px;
+  z-index: -1;
+  opacity: 0;
+  color: #fff !important;
+  white-space: nowrap;
+  transition: all 0.5s ease-out 0s;
+  -moz-transition: all 0.5s ease-out 0s;
+  -webkit-transition: all 0.5s ease-out 0s;
+  line-height: 120%;
+}
+
+#container.processing{
+    white-space: normal;
+}
+
+#container.activated{
+    z-index: 200;
+    opacity: 1;
+}
+
 a#preview.circle > img, #preview1.circle > img{
     max-width: 100%;
 }
@@ -1602,7 +1628,7 @@ div.btn.btn-upload {
   top:0;
   height: 100%;
   width: 100%;
-  z-index: 110;
+  z-index: 105;
   cursor: pointer;
 }
 
@@ -1615,6 +1641,7 @@ div.btn.btn-upload {
   height: 100%;
   width: 100%;
   z-index: 100;
+  cursor: pointer;
 }
 
 div.socialIcons > a{
@@ -1985,6 +2012,10 @@ div.wrapQuestion div.mf-radio input.mf-radio:checked + span.mf-radio:before{
 @media only screen and (min-width : 480px) {
     div.topImage{
         height: 300px;
+    }
+    
+    div.wrapPieChart [data-target="piechart"]{
+        bottom: 100px;
     }
 }
 
