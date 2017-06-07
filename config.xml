@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="net.intellicomstudios.mevent" version="1.0.6">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="net.intellicomstudios.mevent" version="1.0.7">
   <name>M Event</name>
   <description>M Event</description>
   <author href="http://www.intellicomstudios.net" email="info@intellicomstudios.net">Robin Ozolins</author>
@@ -58,6 +58,7 @@
         <icon src="res/ios/icon/Icon-Small-50x50@1x.png" platform="ios" width="50" height="50" />
         <icon src="res/ios/icon/Icon-Small-50x50@2x.png" platform="ios" width="100" height="100" />
     </platform>
+    <preference name="permissions" value="none" />
     <preference name="target-device" value="handset" />
     <preference name="deployment-target" value="8.0" />
     <preference name="DisallowOverscroll" value="true"/>
