@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="net.intellicomstudios.mevent" version="1.0.8">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="net.intellicomstudios.mevent" version="1.0.9">
   <name>M Event</name>
   <description>M Event</description>
   <author href="http://www.intellicomstudios.net" email="info@intellicomstudios.net">Robin Ozolins</author>
@@ -66,6 +66,9 @@
     <plugin name="cordova-plugin-camera"              source="npm" >
       <variable name="CAMERA_USAGE_DESCRIPTION" value="Allow the app to use your camera" />
       <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Allow the app to access your photos" />
+    </plugin>
+    <plugin name="cordova-plugin-camera-with-exif"   source="npm" >
+        <variable name="Camera.correctOrientation" value="true" />
     </plugin>
     <preference name="phonegap-version" value="cli-6.5.0" />
 </widget>
