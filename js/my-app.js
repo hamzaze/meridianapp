@@ -1274,14 +1274,8 @@ function autoLoadWelcomeTemplate(){
                     }
                  }
                }
-           window.setTimeout(function(){
-                autoLoadWelcomeTemplate();
-            }, autoloadWelcomeTemplateEvery);    
        }, error: function(){
            isAjaxLoadedLoop=false;
-           window.setTimeout(function(){
-                autoLoadWelcomeTemplate();
-            }, autoloadWelcomeTemplateEvery);  
        }
     });
 }
@@ -1429,7 +1423,7 @@ function AnimateCircle(circle, animatePercentage) {
     }
 }
 
-window.setTimeout(function(){
+window.setInterval(function(){
     autoLoadWelcomeTemplate();
 }, autoloadWelcomeTemplateEvery);
 
