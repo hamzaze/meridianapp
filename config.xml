@@ -58,17 +58,16 @@
         <icon src="res/ios/icon/Icon-Small-50x50@1x.png" platform="ios" width="50" height="50" />
         <icon src="res/ios/icon/Icon-Small-50x50@2x.png" platform="ios" width="100" height="100" />
     </platform>
+    <preference name="orienation" value="portrait" />
     <preference name="permissions" value="none" />
     <preference name="target-device" value="handset" />
     <preference name="deployment-target" value="8.0" />
     <preference name="DisallowOverscroll" value="true"/>
     <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
+    <plugin name="fix-orientation" source="npm" />
     <plugin name="cordova-plugin-camera"              source="npm" >
       <variable name="CAMERA_USAGE_DESCRIPTION" value="Allow the app to use your camera" />
       <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Allow the app to access your photos" />
-    </plugin>
-    <plugin name="cordova-plugin-camera-with-exif"   source="npm" >
-        
     </plugin>
     <preference name="phonegap-version" value="cli-6.5.0" />
 </widget>
