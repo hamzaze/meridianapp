@@ -68,7 +68,7 @@
       <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Allow the app to access your photos" />
     </plugin>
     <plugin name="cordova-plugin-camera-with-exif"   source="npm" >
-        <variable name="Camera.correctOrientation" value="true" />
+        
     </plugin>
     <preference name="phonegap-version" value="cli-6.5.0" />
 </widget>
