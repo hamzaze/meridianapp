@@ -1135,7 +1135,7 @@ function previewFile() {
            isAjaxLoaded=false;
                if(data["success"]==1){
                    preview.addClass("circle").children("img").attr("src", data["src"]);
-                   preview1.html("").append($$("<div class='btn btn-upload'><input name='new-image' id='new-image' type='file'></div><img src='"+data["src"]+"' alt='Upload Photo' />"));
+                   preview1.html("").append($$("<div class='btn btn-upload'><input name='new-image' id='new-image' type='file' accept='image/*'></div><img src='"+data["src"]+"' alt='Upload Photo' />"));
                    $$("#container").removeClass("processing activated");
                    window.setTimeout(function(){
                        circle.destroy();
